@@ -1,0 +1,10 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
+  <label>Primeiro nome: </label>
+  <input type="text" formControlName="firstName" />
+  <br />
+  <br />
+  <label>Último nome: </label> <input type="text" formControlName="lastName" />
+  <br />
+  <button>Enviar</button>
+  <br />
+</form>
