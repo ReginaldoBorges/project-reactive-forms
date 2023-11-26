@@ -1,7 +1,8 @@
 <form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
   <label>Primeiro nome: </label>
   <input type="text" formControlName="firstName" />
-  <span *ngIf="cadastroForm.get('firstName')?.errors && (cadastroForm.get('firstName')?.touched || cadastroForm.get('firstName')?.dirty)">
+  <span
+  *ngIf="cadastroForm.get('firstName')?.errors && (cadastroForm.get('firstName')?.touched || cadastroForm.get('firstName')?.dirty)">
     Primeiro nome é um campo obritatório, por favor, verificar!
   </span>
   <br />
@@ -12,6 +13,6 @@
   {{cadastroForm.get('firstName')?.touched | json}}
   {{cadastroForm.get('firstName')?.dirty | json}}</p>
   <br />
-  <button>Enviar</button>
+  <button [disabled] = "cadastroForm.invalid">Enviar</button>
   <br />
 </form>

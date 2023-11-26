@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { observeNotification } from 'rxjs/internal/Notification';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -16,8 +17,12 @@ export class ReactiveFormsComponent implements OnInit {
   ngOnInit(): void {}
 
   public submitForm(): void {
-    console.log(this.cadastroForm.value);
-    console.log(this.cadastroForm.value.firstName);
-    console.log(this.cadastroForm.value.lastName);
+    if(this.cadastroForm.valid) {
+      console.log(this.cadastroForm.value);
+      console.log(this.cadastroForm.value.firstName);
+      console.log(this.cadastroForm.value.lastName);
+    } else {
+      alert("Exitem campos obrigatórios não informados!");
+    }
   }
 }
