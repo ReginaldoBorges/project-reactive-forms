@@ -1,0 +1,55 @@
+<form
+	[formGroup]="cadastroForm"
+	(ngSubmit)="submitForm()"
+>
+	<label>Primeiro nome: </label>
+	<input
+		type="text"
+		formControlName="firstName"
+	/>
+	<span
+		*ngIf="
+			cadastroForm.get('firstName')?.errors &&
+			(cadastroForm.get('firstName')?.touched || cadastroForm.get('firstName')?.dirty)
+		"
+	>
+		Primeiro nome é um campo obritatório, por favor, verificar!
+	</span>
+	<br />
+	<br />
+	<label>Último nome: </label>
+	<input
+		type="text"
+		formControlName="lastName"
+	/>
+	<span
+		*ngIf="
+			cadastroForm.get('lastName')?.errors &&
+			(cadastroForm.get('lastName')?.touched || cadastroForm.get('lastName')?.dirty)
+		"
+	>
+		Quantidade mínima de caracteres
+		{{ cadastroForm.get("lastName")?.errors?.["minlength"]?.requiredLength }}, já digitada
+		{{ cadastroForm.get("lastName")?.errors?.["minlength"]?.actualLength }}.
+	</span>
+	<br />
+	<br />
+	<label
+		>Email:
+		<input
+			type="email"
+			formArrayName="email"
+		/>
+	</label>
+	<p>
+		{{ cadastroForm.get("email")?.errors | json }}
+		<!--
+    {{cadastroForm.get('lastName')?.touched | json}}
+  {{cadastroForm.get('lastName')?.dirty | json}}</p>
+  -->
+		<br />
+		<br />
+		<button [disabled]="cadastroForm.invalid">Enviar</button>
+		<br />
+	</p>
+</form>
